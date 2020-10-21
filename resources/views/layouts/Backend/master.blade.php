@@ -70,6 +70,7 @@
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
+    
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -79,7 +80,7 @@
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="{{asset('Backend/app-assets/js/scripts/extensions/copy-to-clipboard.js')}}"></script>
+        @stack('pageJs')
     <!-- END: Page JS-->
 
 </body>

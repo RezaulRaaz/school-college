@@ -19,9 +19,7 @@ Route::get('/', function () {
 
 
 
-Route::get('/admin/dashboard', function () {
-    return view('Admin/dashboard');
-});
+
 
 Auth::routes();
 
