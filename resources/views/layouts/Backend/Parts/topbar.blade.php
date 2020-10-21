@@ -23,25 +23,17 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="page-user-profile.html"><i class="feather icon-user"></i> Edit Profile</a><a class="dropdown-item" href="app-email.html"><i class="feather icon-mail"></i> My Inbox</a><a class="dropdown-item" href="app-todo.html"><i class="feather icon-check-square"></i> Task</a><a class="dropdown-item" href="app-chat.html"><i class="feather icon-message-square"></i> Chats</a>
 
+                            <div class="dropdown-divider"></div>
+
                             <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">
-                             {{ __('Logout') }}
+                             <i class="feather icon-power"></i> Logout
                          </a>
-
 
                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                              @csrf
                          </form>
-
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('logout')}}"
-                            onclick="even.preventDefault()"
-
-                            
-                            "><i class="feather icon-power"></i>
-                            Logout
-                        </a>
                         </div>
                     </li>
                 </ul>
