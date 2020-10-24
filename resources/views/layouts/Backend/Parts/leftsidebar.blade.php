@@ -12,7 +12,15 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
         <li class=" nav-item"><a href="{{route('admin.dashboard')}}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
-            </li>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Card">Primary Entry</span></a>
+            <ul class="menu-content">
+                <li><a href="card-basic.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">Institute Types</span></a></li>
+                </li>
+            </ul>
+        </li>
+
+
         </ul>
     </div>
 </div>

@@ -1,5 +1,5 @@
 @extends('layouts.Backend.master')
-@section('title','Dashboard')
+@section('title','Type Of institute')
 @push('pageCSS')
 
 @endpush
@@ -7,7 +7,7 @@
 
 @endpush
 @section('content')
-   this is home page
+   this is type of institute
 @endsection
 
 @push('pageJs')
