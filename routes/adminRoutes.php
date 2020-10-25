@@ -7,5 +7,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','as'=>'admin.'], functi
     Route::get('/primary-entry/types','TypeInstitueController@index')->name('primaryEntry.type');
     Route::post('/primary-entry/types/add','TypeInstitueController@store')->name('primaryEntry.type.add');
 
+    Route::get('/primary-entry/college','CollegeInfoController@index')->name('primaryEntry.college');
+
 });
 

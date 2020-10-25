@@ -11,11 +11,16 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-        <li class=" nav-item"><a href="{{route('admin.dashboard')}}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
+
+          <li  class="@if(Route::is('admin.dashboard')) active  @endif nav-item"><a href="{{route('admin.dashboard')}}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
         </li>
-        <li class=" nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Card">Primary Entry</span></a>
+
+
+        <li class=" @if(Route::is('admin.primaryEntry*')) sidebar-group-active @endif nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Card">Primary Entry</span></a>
             <ul class="menu-content">
-            <li><a href="{{route('admin.primaryEntry.type')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">Institute Types</span></a></li>
+                <li class="@if(Route::is('admin.primaryEntry.college')) active @endif" ><a href="{{route('admin.primaryEntry.college')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">College Information</span></a></li>
+                </li>
+                <li class="@if(Route::is('admin.primaryEntry.type')) active @endif" ><a href="{{route('admin.primaryEntry.type')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">Institute Types</span></a></li>
                 </li>
             </ul>
         </li>
