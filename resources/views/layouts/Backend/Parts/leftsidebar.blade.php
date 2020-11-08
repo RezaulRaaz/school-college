@@ -15,6 +15,9 @@
           <li  class="@if(Route::is('admin.dashboard')) active  @endif nav-item"><a href="{{route('admin.dashboard')}}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
         </li>
 
+        <li  class="@if(Route::is('admin.post')) active  @endif nav-item"><a href="{{route('admin.post')}}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Post</span></a>
+        </li>
+
 
         <li class=" @if(Route::is('admin.primaryEntry*')) sidebar-group-active @endif nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Card">Primary Entry</span></a>
             <ul class="menu-content">
