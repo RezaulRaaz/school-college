@@ -12,6 +12,20 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','as'=>'admin.','middlew
     Route::get('/primary-entry/college','CollegeInfoController@index')->name('primaryEntry.college');
     Route::post('/primary-entry/college/add','CollegeInfoController@store')->name('primaryEntry.college.add');
 
+    // category routes start-------------
+
+    Route::get('/primary-entry/category','CategoryController@index')->name('primaryEntry.category');
+    Route::post('/category/store','CategoryController@store')->name('category.store');
+    Route::get('/category/delete/{id}','CategoryController@distory')->name('category.delete');
+
+    // category routes start-------------
+
+
     Route::get('/post','PostController@index')->name('post');
+    Route::post('/post/store','PostController@store')->name('post.store');
+    Route::get('/post/list','PostController@show')->name('post.list');
+    Route::get('/post/delete/{id}','PostController@distroy')->name('post.delete');
+    Route::get('/post/edit/{id}','PostController@edit')->name('post.edit');
+    Route::post('/post/update/{id}','PostController@update')->name('post.update');
 });
 

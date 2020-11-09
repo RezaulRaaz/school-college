@@ -21,7 +21,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
              </div>
-             <div class="col-lg-3">
+             <div class="col-lg-6">
                 <table class="table">
                     <thead class="thead-dark">
                       <tr>

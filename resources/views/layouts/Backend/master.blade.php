@@ -12,6 +12,7 @@
 
     <!-- BEGIN: Vendor CSS-->
 <link rel="stylesheet" type="text/css" href="{{asset('Backend/app-assets/vendors/css/vendors.min.css')}}">
+@stack('pageCSS')
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -21,12 +22,11 @@
     <link rel="stylesheet" type="text/css" href="{{asset('Backend/app-assets/css/components.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('Backend/app-assets/css/themes/dark-layout.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('Backend/app-assets/css/themes/semi-dark-layout.css')}}">
-
+    @toastr_css
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('Backend/app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('Backend/app-assets/css/core/colors/palette-gradient.css')}}">
     <!-- END: Page CSS-->
-    @stack('pageCSS')
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('Backend/assets/css/style.css')}}">
@@ -75,6 +75,9 @@
     @stack('pageJs')
     <!-- END: Page Vendor JS-->
 
+    @jquery
+    @toastr_js
+    @toastr_render
     <!-- BEGIN: Theme JS-->
     <script src="{{asset('Backend/app-assets/js/core/app-menu.js')}}"></script>
     <script src="{{asset('Backend/app-assets/js/core/app.js')}}"></script>

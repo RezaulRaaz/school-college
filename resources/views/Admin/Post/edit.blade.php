@@ -16,13 +16,13 @@
     <div class="card">
         <div class="card-content">
             <div class="card-body">
-            <form action="{{route('admin.post.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('admin.post.update',$posts->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="form-group">
                                 <label for="post">Post Title</label>
-                                <input type="text" name="title" class="form-control" value="{{old('title')}}"id="post">
+                                <input type="text"  name="title" class="form-control" value="{{$posts->post_title}}"id="post">
                                 @error('title')
                                     <small id="emailHelp" class="form-text text-danger">{{$message}}</small>
                                 @enderror
@@ -32,14 +32,16 @@
                                      <small id="emailHelp" class="form-text text-danger">{{$message}}</small>
                                 @enderror
                                 <label for="exampleFormControlTextarea1">Description</label>
-                                <textarea name="Description" rows="15"  class="form-control my-editor">{{old('Description')}}</textarea>
+                                <textarea name="Description" rows="15"  class="form-control my-editor">{!!$posts->post_description!!}</textarea>
                             </div>
                         </div>
                         <div class="col-lg-4">
-                        <img src="{{asset('Backend/assets/img/featured.jpg')}}" id="image" width="100%" alt="">
+
+                        <img src="{{asset('/images/post/'.$posts->post_image)}}" id="image" width="100%" alt="">
+
                             <div class="form-group">
                                 <label for="img">Featured Image</label>
-                                <input type="file" name="image" class="form-control" onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])" id="img">
+                                <input type="file" name="image" class="form-control" id="img" onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
                                 @error('image')
                                     <small id="emailHelp" class="form-text text-danger">{{$message}}</small>
                                 @enderror
@@ -48,7 +50,12 @@
                                 <label for="img">Select Category</label>
                                 <select class="select2 form-control" name="category[]" multiple="multiple">
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->category }}</option>
+                                        <option value="{{ $category->id }}"
+
+                                            @foreach($posts->categories as $postCategory)
+                                            {{ $postCategory->id == $category->id ? 'selected' : '' }}
+                                           @endforeach
+                                            >{{ $category->category }}</option>
                                     @endforeach
                                 </select>
                                 @error('category')
@@ -56,11 +63,22 @@
                             @enderror
                             </div>
                             <div class="form-group">
+                                <label for="img">Select Status</label>
+                                <select class="form-control" name="status">
+                                     <option value="1" {{($posts->post_status==1)? 'selected':''}}>Aproved</option>
+                                     <option value="2" {{($posts->post_status==2)? 'selected':''}} >Pending</option>
+                                     <option value="3" {{($posts->post_status==3)? 'selected':''}}>Cancel</option>
+                                </select>
+                                @error('status')
+                                <small id="emailHelp" class="form-text text-danger">{{$message}}</small>
+                                 @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="img">Meta Description , Meta Description Helps to Increase post google</label>
                                 <textarea  name="meta" id="" class="form-control" rows="5">{{old('metaDescription')}}</textarea>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" checked name="published" id="defaultCheck1">
+                                <input class="form-check-input" type="checkbox" {{($posts->post_publish=='on') ? 'checked' : ''}} name="published" id="defaultCheck1">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Publish
                                 </label>

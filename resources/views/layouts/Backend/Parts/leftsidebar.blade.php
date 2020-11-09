@@ -15,16 +15,27 @@
           <li  class="@if(Route::is('admin.dashboard')) active  @endif nav-item"><a href="{{route('admin.dashboard')}}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
         </li>
 
-        <li  class="@if(Route::is('admin.post')) active  @endif nav-item"><a href="{{route('admin.post')}}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Post</span></a>
+        <li class="@if(Route::is('admin.post*')) sidebar-group-active open @endif nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Card">Posts</span></a>
+            <ul class="menu-content">
+                <li class="@if(Route::is('admin.post')) active @endif" ><a href="{{route('admin.post')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">Add New</span></a></li>
+                </li>
+                <li class="@if(Route::is('admin.post.list')) active @endif" ><a href="{{route('admin.post.list')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">Post List</span></a></li>
+            </li>
+            </ul>
         </li>
 
 
-        <li class=" @if(Route::is('admin.primaryEntry*')) sidebar-group-active @endif nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Card">Primary Entry</span></a>
+
+
+        <li class="@if(Route::is('admin.primaryEntry*')) sidebar-group-active open @endif nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Card">Primary Entry</span></a>
             <ul class="menu-content">
                 <li class="@if(Route::is('admin.primaryEntry.college')) active @endif" ><a href="{{route('admin.primaryEntry.college')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">College Information</span></a></li>
                 </li>
                 <li class="@if(Route::is('admin.primaryEntry.type')) active @endif" ><a href="{{route('admin.primaryEntry.type')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">Institute Types</span></a></li>
                 </li>
+
+                <li class="@if(Route::is('admin.primaryEntry.category')) active @endif" ><a href="{{route('admin.primaryEntry.category')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">Category</span></a></li>
+            </li>
             </ul>
         </li>
 

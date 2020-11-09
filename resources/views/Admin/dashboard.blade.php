@@ -7,7 +7,13 @@
 
 @endpush
 @section('content')
+<div class="card">
+    <div class="card-content">
+        <div class="card-body">
    this is home page
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('pageJs')
