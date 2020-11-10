@@ -40,6 +40,14 @@
         </li>
 
 
+        <li class="@if(Route::is('admin.user*')) sidebar-group-active open @endif nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Card">Users</span></a>
+            <ul class="menu-content">
+                <li class="@if(Route::is('admin.user.list')) active @endif" ><a href="{{route('admin.user.list')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">User list</span></a></li>
+                </li>
+            </li>
+            </ul>
+        </li>
+
         </ul>
     </div>
 </div>

@@ -18,8 +18,10 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','as'=>'admin.','middlew
     Route::post('/category/store','CategoryController@store')->name('category.store');
     Route::get('/category/delete/{id}','CategoryController@distory')->name('category.delete');
 
-    // category routes start-------------
+    // category routes end-------------
 
+
+    // post route start------------- --------------------
 
     Route::get('/post','PostController@index')->name('post');
     Route::post('/post/store','PostController@store')->name('post.store');
@@ -27,5 +29,14 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','as'=>'admin.','middlew
     Route::get('/post/delete/{id}','PostController@distroy')->name('post.delete');
     Route::get('/post/edit/{id}','PostController@edit')->name('post.edit');
     Route::post('/post/update/{id}','PostController@update')->name('post.update');
+
+    // post routes end--------------------
+
+
+    // users routes start---------------------
+
+    Route::get('/user/list','UserController@index')->name('user.list');
+    Route::get('/user/edit/{id}','UserController@edit')->name('user.edit');
+    Route::get('/user/delete/{id}','UserController@distroy')->name('user.delete');
 });
 

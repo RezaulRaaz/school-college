@@ -66,7 +66,9 @@
         @include('layouts.Backend.Parts.footer')
     <!-- END: Footer-->
 
-
+    @jquery
+    @toastr_js
+    @toastr_render
     <!-- BEGIN: Vendor JS-->
     <script src="{{asset('Backend/app-assets/vendors/js/vendors.min.js')}}"></script>
     <!-- BEGIN Vendor JS-->
@@ -75,9 +77,7 @@
     @stack('pageJs')
     <!-- END: Page Vendor JS-->
 
-    @jquery
-    @toastr_js
-    @toastr_render
+
     <!-- BEGIN: Theme JS-->
     <script src="{{asset('Backend/app-assets/js/core/app-menu.js')}}"></script>
     <script src="{{asset('Backend/app-assets/js/core/app.js')}}"></script>

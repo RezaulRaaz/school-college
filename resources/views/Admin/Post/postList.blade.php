@@ -1,7 +1,7 @@
 @extends('layouts.Backend.master')
-@section('title','Dashboard')
+@section('title','Posts')
 @push('pageCSS')
-
+<link rel="stylesheet" type="text/css" href="{{asset('Backend/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
 @endpush
 @push('css')
 
@@ -12,43 +12,60 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <table class="table">
-                        <thead class="thead-dark">
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Post Title</th>
-                            <th scope="col">Writter</th>
-                            <th scope="col">Post Status</th>
-                            <th scope="col">Is Published</th>
-                            <th scope="col">Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($posts as $post)
-                          <tr>
-                            <th scope="row">1</th>
-                          <td>{{$post->post_title}}</td>
-                            <td>{{$post->user->name}}</td>
-                            <td>
+                      <!-- Zero configuration table -->
+                <section id="basic-datatable">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Posts</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body card-dashboard">
+                                        <div class="table-responsive">
+                                            <table class="table zero-configuration" id="userTable" >
+                                                <thead  >
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Position</th>
+                                                        <th>Office</th>
+                                                        <th>Age</th>
+                                                        <th>Start date</th>
+                                                        <th>Salary</th>
+                                                    </tr>
+                                                </thead>
+                                                @foreach ($posts as $key=>$post)
+                                                <tr>
+                                                <th scope="row">{{$key+1}}</th>
+                                                <td>{{$post->post_title}}</td>
+                                                  <td>{{$post->user->name}}</td>
+                                                  <td>
 
-                                @if($post->post_status==1) <a href="#" class="btn btn-sm btn-success text-white">Aproved</a>
-                                @elseif($post->post_status==2)<a href="#" class="btn btn-sm btn-primary text-white">Pending</a>
-                                @elseif($post->post_status==3)<a href="#" class="btn btn-sm btn-danger text-white">Cancel</a>
-                                @else
-                                <a href="#" class="btn btn-sm btn-danger text-white">Cancel</a>
-                                @endif
+                                                      @if($post->post_status==1) <a href="#" class="btn btn-sm btn-success text-white">Aproved</a>
+                                                      @elseif($post->post_status==2)<a href="#" class="btn btn-sm btn-primary text-white">Pending</a>
+                                                      @elseif($post->post_status==3)<a href="#" class="btn btn-sm btn-danger text-white">Cancel</a>
+                                                      @else
+                                                      <a href="#" class="btn btn-sm btn-danger text-white">Cancel</a>
+                                                      @endif
 
-                            </td>
-                            <td>@if($post->post_publish=='on') <a href="#" class="btn btn-sm btn-primary text-white">Published</a>@else<a href="#" class="btn btn-sm btn-danger text-white">Not Published</a> @endif</td>
-                            <td>
-                                <a href="{{route('admin.post.edit',$post->id)}}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
-                            <a href="{{route('admin.post.delete',$post->id)}}" class="btn btn-sm btn-danger">x</a>
-                            </td>
-                          </tr>
-                          @endforeach
-                        </tbody>
-                      </table>
+                                                  </td>
+                                                  <td>@if($post->post_publish=='on') <a href="#" class="btn btn-sm btn-primary text-white">Published</a>@else<a href="#" class="btn btn-sm btn-danger text-white">Not Published</a> @endif</td>
+                                                  <td>
+                                                      <a href="{{route('admin.post.edit',$post->id)}}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                                                      <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
+                                                  <a href="{{route('admin.post.delete',$post->id)}}" class="btn btn-sm btn-danger">x</a>
+                                                  </td>
+                                                </tr>
+                                                @endforeach
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--/ Zero configuration table -->
                 </div>
             </div>
         </div>
@@ -57,8 +74,15 @@
 @endsection
 
 @push('pageJs')
-
+<script src="{{asset('Backend/app-assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
+<script src="{{asset('Backend/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
 @endpush
 @push('js')
+<script src="{{asset('Backend/app-assets/js/scripts/datatables/datatable.js')}}"></script>
+<script>
+    $(document).ready(function() {
+        $('.zero-configuration').DataTable();
+   });
 
+</script>
 @endpush
