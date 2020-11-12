@@ -21,6 +21,7 @@ class CreateCollegeinfosTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('mobile')->nullable();
             $table->string('logo');
+            $table->string('Website_college_code')->nullable();
             $table->longText('adress');
             $table->longText('description')->nullable();
             $table->unsignedBigInteger('type_id')->nullable();

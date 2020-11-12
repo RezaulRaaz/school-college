@@ -29,7 +29,7 @@
 
         <li class="@if(Route::is('admin.primaryEntry*')) sidebar-group-active open @endif nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Card">Primary Entry</span></a>
             <ul class="menu-content">
-                <li class="@if(Route::is('admin.primaryEntry.college')) active @endif" ><a href="{{route('admin.primaryEntry.college')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">College Information</span></a></li>
+                <li class="@if(Route::is('admin.primaryEntry.college')) active @endif" ><a href="{{route('admin.primaryEntry.college')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">Institute Add</span></a></li>
                 </li>
                 <li class="@if(Route::is('admin.primaryEntry.type')) active @endif" ><a href="{{route('admin.primaryEntry.type')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">Institute Types</span></a></li>
                 </li>
@@ -40,8 +40,27 @@
         </li>
 
 
+
+        <li class="@if(Route::is('admin.mark*')) sidebar-group-active open @endif nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Card">Result</span></a>
+            <ul class="menu-content">
+                <li class="@if(Route::is('admin.mark.result')) active @endif" ><a href="{{route('admin.mark.result')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">Add Markshet</span></a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="@if(Route::is('admin.subject*')) sidebar-group-active open @endif nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Card">Subjects</span></a>
+            <ul class="menu-content">
+                <li class="@if(Route::is('admin.subject.list')) active @endif" ><a href="{{route('admin.subject.list')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">All Subjets</span></a>
+                </li>
+            </ul>
+        </li>
+
+
         <li class="@if(Route::is('admin.user*')) sidebar-group-active open @endif nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Card">Users</span></a>
             <ul class="menu-content">
+                <li class="@if(Route::is('admin.user.add')) active @endif" ><a href="{{route('admin.user.add')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">Add New User</span></a></li>
+                </li>
+
                 <li class="@if(Route::is('admin.user.list')) active @endif" ><a href="{{route('admin.user.list')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">User list</span></a></li>
                 </li>
             </li>

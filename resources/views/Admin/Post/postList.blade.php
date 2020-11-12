@@ -28,10 +28,10 @@
                                                     <tr>
                                                         <th>Name</th>
                                                         <th>Position</th>
-                                                        <th>Office</th>
-                                                        <th>Age</th>
-                                                        <th>Start date</th>
-                                                        <th>Salary</th>
+                                                        <th>Writer</th>
+                                                        <th>Post Status</th>
+                                                        <th>Is Published</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 @foreach ($posts as $key=>$post)
@@ -41,9 +41,9 @@
                                                   <td>{{$post->user->name}}</td>
                                                   <td>
 
-                                                      @if($post->post_status==1) <a href="#" class="btn btn-sm btn-success text-white">Aproved</a>
-                                                      @elseif($post->post_status==2)<a href="#" class="btn btn-sm btn-primary text-white">Pending</a>
-                                                      @elseif($post->post_status==3)<a href="#" class="btn btn-sm btn-danger text-white">Cancel</a>
+                                                      @if($post->post_status==1) <a href="#" class="badge badge-success text-white">Aproved</a>
+                                                      @elseif($post->post_status==2)<a href="#" class="badge badge-primary text-white">Pending</a>
+                                                      @elseif($post->post_status==3)<a href="#" class="badge badge-danger text-white">Cancel</a>
                                                       @else
                                                       <a href="#" class="btn btn-sm btn-danger text-white">Cancel</a>
                                                       @endif
@@ -51,9 +51,9 @@
                                                   </td>
                                                   <td>@if($post->post_publish=='on') <a href="#" class="btn btn-sm btn-primary text-white">Published</a>@else<a href="#" class="btn btn-sm btn-danger text-white">Not Published</a> @endif</td>
                                                   <td>
-                                                      <a href="{{route('admin.post.edit',$post->id)}}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
-                                                      <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
-                                                  <a href="{{route('admin.post.delete',$post->id)}}" class="btn btn-sm btn-danger">x</a>
+                                                      <a href="{{route('admin.post.edit',$post->id)}}"class="badge badge-success badge-md "><i class="fa fa-pencil"></i></a>
+                                                      <a href="#" class="badge badge-primary badge-md "><i class="fa fa-eye"></i></a>
+                                                  <a href="{{route('admin.post.delete',$post->id)}}" class="badge badge-danger badge-md ">x</a>
                                                   </td>
                                                 </tr>
                                                 @endforeach

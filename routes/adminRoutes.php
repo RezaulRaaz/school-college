@@ -35,8 +35,24 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','as'=>'admin.','middlew
 
     // users routes start---------------------
 
-    Route::get('/user/list','UserController@index')->name('user.list');
+    Route::get('/user/add','UserController@index')->name('user.add');
+    Route::post('/user/new','UserController@store')->name('new.user');
+    Route::get('/user/list','UserController@show')->name('user.list');
     Route::get('/user/edit/{id}','UserController@edit')->name('user.edit');
     Route::get('/user/delete/{id}','UserController@distroy')->name('user.delete');
+
+  // users routes end---------------------
+
+  // subjects routes start---------------------
+
+    Route::get('/subject/add','SubjectController@index')->name('subject.add');
+    Route::get('/subject/list','SubjectController@list')->name('subject.list');
+    Route::post('/subject/store','SubjectController@store')->name('subject.store');
+
+
+    // marksheet route or resul add--------------------
+
+    Route::get('/mark/index','ResultController@index')->name('mark.result');
+
 });
 

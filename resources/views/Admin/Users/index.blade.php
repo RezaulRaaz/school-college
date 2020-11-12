@@ -1,99 +1,99 @@
 @extends('layouts.Backend.master')
-@section('title','Users')
-@push('pageCSS')
-<link rel="stylesheet" type="text/css" href="{{asset('Backend/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
-@endpush
-@push('css')
+@section('title', 'New User')
+    @push('pageCSS')
 
-@endpush
+    @endpush
+    @push('css')
+
+    @endpush
 @section('content')
-<div class="card">
-    <div class="card-content">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-lg-12">
-                      <!-- Zero configuration table -->
-                <section id="basic-datatable">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <h2>Add New User</h2>
+            <form action="{{route('admin.new.user')}}" method="post" enctype="multipart/form-data" >
+                @csrf
                     <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Users List</h4>
-                                </div>
-                                <div class="card-content">
-                                    <div class="card-body card-dashboard">
-                                        <div class="table-responsive">
-                                            <table class="table zero-configuration" id="userTable" >
-                                                <thead>
-                                                    <tr>
-                                                        <th>Total</th>
-                                                        <th>Picture</th>
-                                                        <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Phone</th>
-                                                        <th>User Type</th>
-                                                        <th>Salary</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($users as $key=>$user)
-                                                    <tr>
-                                                    <th scope="row">{{$key+1}}</th>
-                                                    <td>{{$user->avatar}}</td>
-                                                      <td>{{$user->name}}</td>
-                                                      <td>{{$user->email}}
-                                                        @if(!empty($user->email_verified_at)) <a href="#" title="email varified" > <i class="fa fa-check-circle"></i></a>
-                                                        @else
-                                                        <a href="#" class="text-danger" title="email not varified" ><i class="fa fa-times-circle"></i></a>
-                                                        @endif
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="name">Profile Picture</label>
+                                <input type="file" name="avatar" class="form-control" id="name">
+                                @error('avatar')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="name">User Name</label>
+                                <input type="text" name="user_name" class="form-control" id="name">
+                                @error('user_name')
+                                 <div class="alert alert-danger">{{ $message }}</div>
+                                 @enderror
 
-                                                    </td>
-                                                      <td>{{$user->phone}}</td>
-                                                      <td></td>
-                                                      <td>
-                                                          <a href="{{route('admin.user.edit',$user->id)}}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
-                                                          <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
-                                                      <a href="{{route('admin.user.delete',$user->id)}}" class="btn btn-sm btn-danger">x</a>
-                                                      </td>
-                                                    </tr>
-                                                    @endforeach
-                                                </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>Position</th>
-                                                        <th>Office</th>
-                                                        <th>Age</th>
-                                                        <th>Start date</th>
-                                                        <th>Salary</th>
-                                                    </tr>
-                                                </tfoot>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">Designation</label>
+                                <input type="text" name="designation" class="form-control" id="name">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="about">About</label>
+                                <textarea class="form-control" name="about" id="about" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <textarea class="form-control" name="address" id="address" rows="3"></textarea>
                             </div>
                         </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="name">Phone</label>
+                                <input type="text" class="form-control" id="name">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                    else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Email</label>
+                                <input type="email" name="email" class="form-control" id="name">
+                                @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Assign Role</label>
+                                <select name="role" class="form-control">
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->id }}">{{$role->name}}</option>
+                                    @endforeach
+                                </select>
+                                @error('role')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">Password</label>
+                                <input type="password" name="password" class="form-control" id="name">
+                                @error('password')
+                                     <div class="alert alert-danger">{{ $message }}</div>
+                                 @enderror
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" name="varified" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Email Varified</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary float-right">Submit</button>
+                        </div>
                     </div>
-                </section>
-                <!--/ Zero configuration table -->
-                </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @push('pageJs')
-<script src="{{asset('Backend/app-assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
-<script src="{{asset('Backend/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
+
 @endpush
 @push('js')
-<script src="{{asset('Backend/app-assets/js/scripts/datatables/datatable.js')}}"></script>
-<script>
-    $(document).ready(function() {
-        $('.zero-configuration').DataTable();
-   });
 
-</script>
 @endpush

@@ -32,7 +32,7 @@
                                      <small id="emailHelp" class="form-text text-danger">{{$message}}</small>
                                 @enderror
                                 <label for="exampleFormControlTextarea1">Description</label>
-                                <textarea name="Description" rows="15"  class="form-control my-editor">{{old('Description')}}</textarea>
+                                <textarea name="Description" rows="25"  class="form-control my-editor">{{old('Description')}}</textarea>
                             </div>
                         </div>
                         <div class="col-lg-4">

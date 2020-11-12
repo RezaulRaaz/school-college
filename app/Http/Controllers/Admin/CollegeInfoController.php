@@ -20,11 +20,13 @@ class CollegeInfoController extends Controller
     $institute->email=$request->email;
     $institute->user_id =1;
     $institute->mobile=$request->mobile;
+    $institute->Website_college_code=rand(1000, 9999);
     $institute->type_id =$request->type_id;
     $institute->adress=$request->address;
     $institute->description=$request->description;
     $institute->start_year=$request->Start_year;
     $institute->logo='fkldsjkl';
     $institute->save();
+    return redirect()->back();
    }
 }
