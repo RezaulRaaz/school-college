@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
-use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+//use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use File;
+
 
 class PostController extends Controller
 {
@@ -25,14 +27,19 @@ class PostController extends Controller
             'category'=>'required',
         ]);
         $date= date("FY");
-        $slug = Str::slug($request->title,'-');
+
+        function make_slug($string) {
+            return preg_replace('/\s+/u', '-', trim($string));
+        }
+        $slug = make_slug($request->title);
        $file=$request->file('image');
         $fileSizeBytes = filesize($file);
         $sizeInKB = floor(($fileSizeBytes/1024));
-        if( 1024 >=  $sizeInKB){
+        if(5024 >=$sizeInKB){
             $imageName = $date.'/'.$slug.'.'.$file->getClientOriginalExtension();
-            if (!File::exists("/images/post/".$date)) {
-                File::makeDirectory("images/post/".$date,0777,true);
+//            dd($imageName);
+            if(!File::exists('images/post/'.$date)) {
+                File::makeDirectory('images/post/'.$date,0777,true);
             }
             $destinationPath = 'images/post/'.$date;
             $file->move($destinationPath, $imageName);
@@ -56,14 +63,14 @@ class PostController extends Controller
         //   $post->categories()->sync($request->category); for update posts
 
         }else{
-            toastr()->warning('Your Image is More than 1 MB', 'Warning', ['timeOut' => 5000]);
+            toastr()->warning('Your Image is More than 5 MB', 'Warning', ['timeOut' => 5000]);
             return redirect()->back();
         }
 
     }
 
     public function show(){
-       $posts= Post::latest()->paginate(10);
+       $posts= Post::where('ppc','post')->orWhere('ppc','featuredPost')->orderBy('id')->get();
        return view('Admin.Post.postList',compact('posts'));
     }
 
@@ -82,7 +89,10 @@ class PostController extends Controller
             'category'=>'required',
         ]);
         $date= date("FY");
-        $slug = Str::slug($request->title,'-');
+        function make_slug($string) {
+            return preg_replace('/\s+/u', '-', trim($string));
+        }
+        $slug = make_slug($request->title);
 
        $file=$request->file('image');
 
@@ -100,7 +110,7 @@ class PostController extends Controller
                         File::delete(public_path('/images/post/'.$post->post_image));
                     }
 
-                    if (!File::exists("/images/post/".$date)) {
+                    if (!File::exists("images/post/".$date)) {
                         File::makeDirectory("images/post/".$date,0777,true);
                     }
                     $destinationPath = 'images/post/'.$date;
@@ -139,6 +149,11 @@ class PostController extends Controller
             toastr()->success('Your Post Deleted', 'success', ['timeOut' => 5000]);
             return redirect()->back();
         }
+    }
+
+    public function noticeShow(){
+        $posts= Post::where('ppc','notice')->orderBy('id')->get();
+        return view('Admin.Post.notice_list',compact('posts'));
     }
 
 

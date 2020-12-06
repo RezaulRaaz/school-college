@@ -93,12 +93,15 @@
 @endpush
 @push('js')
     <script src="{{ asset('Backend/assets/js/select2.min.js') }}"></script>
-
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+{{--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>--}}
+    {{--<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>--}}
+<script src="https://cdn.tiny.cloud/1/4v9qs4xphj2l9euoe90il4igrk2idwti1xps8h6zac4svef4/tinymce/5/tinymce.min.js"></script>
     <script>
+        console.log('top');
         var editor_config = {
             path_absolute: "/",
             selector: "textarea.my-editor",
+            relative_urls: false,
             plugins: [
                 "advlist textcolor autolink lists link image charmap print preview hr anchor pagebreak",
                 "searchreplace wordcount visualblocks visualchars code fullscreen",
@@ -106,28 +109,28 @@
                 "emoticons template paste textcolor colorpicker textpattern"
             ],
             toolbar: "insertfile undo redo | styleselect | bold italic | forecolor backcolor |  alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
-            relative_urls: false,
-            file_browser_callback: function(field_name, url, type, win) {
-                var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName(
-                    'body')[0].clientWidth;
-                var y = window.innerHeight || document.documentElement.clientHeight || document
-                    .getElementsByTagName('body')[0].clientHeight;
+            file_picker_callback : function(callback, value, meta) {
+                var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
+                var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
 
-                var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
-                if (type == 'image') {
+                var cmsURL = editor_config.path_absolute + 'laravel-filemanager?editor=' + meta.fieldname;
+                if (meta.filetype == 'image') {
                     cmsURL = cmsURL + "&type=Images";
                 } else {
                     cmsURL = cmsURL + "&type=Files";
                 }
 
-                tinyMCE.activeEditor.windowManager.open({
-                    file: cmsURL,
-                    title: 'Filemanager',
-                    width: x * 0.8,
-                    height: y * 0.8,
-                    resizable: "yes",
-                    close_previous: "no"
-                });
+                tinyMCE.activeEditor.windowManager.openUrl({
+                        url : cmsURL,
+                        title : 'Filemanager',
+                        width : x * 0.8,
+                        height : y * 0.8,
+                        resizable : "yes",
+                        close_previous : "no",
+                        onMessage: (api, message) => {
+                        callback(message.content);
+            }
+            });
             }
         };
 

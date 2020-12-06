@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','as'=>'admin.','middlew
     Route::post('/post/update/{id}','PostController@update')->name('post.update');
 
     // post routes end--------------------
+    Route::get('/notice','PostController@noticeShow')->name('post.notice.list');
 
 
     // users routes start---------------------
@@ -59,5 +60,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','as'=>'admin.','middlew
     Route::get('/institute/get','ResultController@getdata')->name('institute.get');
     Route::post('/mark/result/add','ResultController@store')->name('mark.add');
 
+    // Website Settings route --------------------
+    Route::get('/settings','SettingsController@index')->name('settings');
 });
 

@@ -13,17 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','FrontendController@welcome');
-
-
-
-
-
 Auth::routes();
-
-
-
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+Route::get('/','FrontendController@welcome')->name('home');
+Route::get('/posts','FrontendController@posts')->name('posts');
+Route::get('/post/{title}/{id}','FrontendController@singlePost')->name('single.post');
+Route::get('/notices','FrontendController@notices')->name('notices');
+Route::get('/notice/{title}/{id}','FrontendController@singleNotices')->name('single.notices');
 

@@ -554,7 +554,7 @@
         'port' => '587',
         'encryption' => 'tls',
         'username' => NULL,
-        'password' => 'gmail@raaz@54321',
+        'password' => '',
       ),
       'ses' => 
       array (

@@ -47,7 +47,7 @@
                 <div class="p-school-title text-center py-5">
                     <marquee behavior="" direction="">
                         @foreach($notices as $notice)
-                            <a href="#">{{$notice->post_title}}</a> |
+                            <a href="{{route('single.notices',[$notice->post_slug,$notice->id])}}">{{$notice->post_title}}</a> |
                         @endforeach
                     </marquee>
                 </div>

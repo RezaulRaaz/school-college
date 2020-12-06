@@ -9,21 +9,21 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="#">All Institute</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Post</a>
+                    <a class="nav-link" href="{{route('posts')}}">Post</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Notice</a>
+                    <a class="nav-link" href="{{route('notices')}}">Notice</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <a href="{{url('/login')}}" class="btn btn-outline-dark my-2 my-sm-0"> dfLogin</a>
-                <button class="btn btn-dark my-2 my-sm-0" type="submit">Add Institute</button>
+                <a href="{{route('login')}}" class="btn btn-outline-dark my-2 my-sm-0">Login</a>
+                <a href="{{route('register')}}" class="btn btn-dark my-2 my-sm-0" type="submit">Add Institute</a>
             </form>
             </div>
         </nav>

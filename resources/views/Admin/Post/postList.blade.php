@@ -53,9 +53,10 @@
                                                   <td>
                                                       <a href="{{route('admin.post.edit',$post->id)}}"class="badge badge-success badge-md "><i class="fa fa-pencil"></i></a>
                                                       <a href="#" class="badge badge-primary badge-md "><i class="fa fa-eye"></i></a>
-                                                  <a href="{{route('admin.post.delete',$post->id)}}" class="badge badge-danger badge-md ">x</a>
+                                                  <a href="{{route('admin.post.delete',$post->id)}}" class="badge badge-danger badge-md">x</a>
                                                   </td>
                                                 </tr>
+
                                                 @endforeach
                                             </table>
                                         </div>
@@ -72,7 +73,6 @@
     </div>
 </div>
 @endsection
-
 @push('pageJs')
 <script src="{{asset('Backend/app-assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
 <script src="{{asset('Backend/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
@@ -83,6 +83,10 @@
     $(document).ready(function() {
         $('.zero-configuration').DataTable();
    });
+
+    function delete(id) {
+        console.log('ok')
+    }
 
 </script>
 @endpush

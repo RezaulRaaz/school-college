@@ -15,11 +15,12 @@
           <li  class="@if(Route::is('admin.dashboard')) active  @endif nav-item"><a href="{{route('admin.dashboard')}}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
         </li>
 
-        <li class="@if(Route::is('admin.post*')) sidebar-group-active open @endif nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Card">Posts</span></a>
+        <li class="@if(Route::is('admin.post*')) sidebar-group-active open @endif nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Card">Posts & Notices</span></a>
             <ul class="menu-content">
                 <li class="@if(Route::is('admin.post')) active @endif" ><a href="{{route('admin.post')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">Add New</span></a></li>
                 </li>
                 <li class="@if(Route::is('admin.post.list')) active @endif" ><a href="{{route('admin.post.list')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">Post List</span></a></li>
+                <li class="@if(Route::is('admin.post.notice.list')) active @endif" ><a href="{{route('admin.post.notice.list')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Basic">Notice List</span></a></li>
             </li>
             </ul>
         </li>
