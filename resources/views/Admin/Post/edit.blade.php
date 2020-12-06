@@ -32,7 +32,7 @@
                                      <small id="emailHelp" class="form-text text-danger">{{$message}}</small>
                                 @enderror
                                 <label for="exampleFormControlTextarea1">Description</label>
-                                <textarea name="Description" rows="15"  class="form-control my-editor">{!!$posts->post_description!!}</textarea>
+                                <textarea name="Description" rows="25"  class="form-control my-editor">{!!$posts->post_description!!}</textarea>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -61,6 +61,17 @@
                                 @error('category')
                                 <small id="emailHelp" class="form-text text-danger">{{$message}}</small>
                             @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="img">Select Publish Category</label>
+                                <select class="form-control" name="postPublishedCategory">
+                                        <option value="post" {{($posts->ppc=='post')? 'selected':''}} >Post</option>
+                                        <option  value="featuredPost" {{($posts->ppc=='featuredPost')? 'selected':''}} >Featured Post</option>
+                                        <option value="notice" {{($posts->ppc=='notice')? 'selected':''}} >Notice</option>
+                                </select>
+                                @error('postPublishedCategory')
+                                <small id="emailHelp" class="form-text text-danger">{{$message}}</small>
+                             @enderror
                             </div>
                             <div class="form-group">
                                 <label for="img">Select Status</label>

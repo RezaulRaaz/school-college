@@ -53,6 +53,11 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','as'=>'admin.','middlew
     // marksheet route or resul add--------------------
 
     Route::get('/mark/index','ResultController@index')->name('mark.result');
+    Route::get('/marksheet/{roll}/{exam}/{year}/{class}/{institute}','ResultController@getMarsheet')->name('get.marksheed');
+    Route::get('/marks/delete/{id}','ResultController@distroy')->name('mark.result.delete');
+
+    Route::get('/institute/get','ResultController@getdata')->name('institute.get');
+    Route::post('/mark/result/add','ResultController@store')->name('mark.add');
 
 });
 

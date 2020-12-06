@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="author" content="PIXINVENT">
     <title>@yield('title')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="apple-touch-icon" href="{{asset('Backend/app-assets/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('Backend/app-assets/images/ico/favicon.ico')}}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
@@ -14,7 +15,6 @@
 <link rel="stylesheet" type="text/css" href="{{asset('Backend/app-assets/vendors/css/vendors.min.css')}}">
 @stack('pageCSS')
     <!-- END: Vendor CSS-->
-
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('Backend/app-assets/css/bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('Backend/app-assets/css/bootstrap-extended.css')}}">
@@ -32,14 +32,13 @@
     <link rel="stylesheet" type="text/css" href="{{asset('Backend/assets/css/style.css')}}">
     <!-- END: Custom CSS-->
     @stack('css')
-
 </head>
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
 
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
-
+<div id="app">
     <!-- BEGIN: Header-->
         @include('layouts.Backend.Parts.topbar')
     <!-- END: Header-->
@@ -65,11 +64,12 @@
     <!-- BEGIN: Footer-->
         @include('layouts.Backend.Parts.footer')
     <!-- END: Footer-->
-
+</div>
     @jquery
     @toastr_js
     @toastr_render
     <!-- BEGIN: Vendor JS-->
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{asset('Backend/app-assets/vendors/js/vendors.min.js')}}"></script>
     <!-- BEGIN Vendor JS-->
 
@@ -83,7 +83,7 @@
     <script src="{{asset('Backend/app-assets/js/core/app.js')}}"></script>
     <script src="{{asset('Backend/app-assets/js/scripts/components.js')}}"></script>
     <!-- END: Theme JS-->
-
+  <!-- Scripts -->
     <!-- BEGIN: Page JS-->
      @stack('js')
     <!-- END: Page JS-->

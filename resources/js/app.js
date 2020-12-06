@@ -21,12 +21,22 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+import AddResultComponent from './components/Admin/AddResultComponent.vue'
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// import vSelect from 'vue-select'
+// Vue.component('v-select', vSelect)
+// import 'vue-select/dist/vue-select.css';
 
+import Autocomplete from 'vuejs-auto-complete'
+Vue.component('auto-compete', Autocomplete)
+var components={
+    'addresult-component':AddResultComponent,
+}
 const app = new Vue({
     el: '#app',
+    components:components,
 });

@@ -56,6 +56,17 @@
                             @enderror
                             </div>
                             <div class="form-group">
+                                <label for="img">Select Publish Category</label>
+                                <select class="form-control" name="postPublishedCategory">
+                                        <option value="post" >Post</option>
+                                        <option  value="featuredPost" selected="selected" >Featured Post</option>
+                                        <option value="notice">Notice</option>
+                                </select>
+                                @error('category')
+                                <small id="emailHelp" class="form-text text-danger">{{$message}}</small>
+                            @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="img">Meta Description , Meta Description Helps to Increase post google</label>
                                 <textarea  name="meta" id="" class="form-control" rows="5">{{old('metaDescription')}}</textarea>
                             </div>

@@ -1,138 +1,169 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    <textarea name="content" class="form-control my-editor"></textarea>
-                </div>
-                <div class="links">
-                <a href="{{route('admin.dashboard')}}">Dashboard</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+@extends('layouts.Frontend.master')
+@section('tite', 'school-college')
+    @push('css')
+    @endpush
+@section('content')
+    <!-- slider area start -->
+    <section>
+        <div class="slider" style="background-image: url({{ asset('Frontend/images/slider-bg.jpg') }});">
+            <div class="sldier-overlay">
+                <div class="container slider-inner d-flex flex-wrap align-content-around ">
+                    <div class="slider-name text-center  text-white">
+                        <div class="school-name d-inline-block">
+                            <h3 class="text-uppercase">Shool-college.com</h3>
+                            <p id="emailHelp" class="form-text text-white text-right">Find Your Once</p>
+                        </div>
+                    </div>
+                    <div class="institue-search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="intitute-search"
+                                placeholder="Search your Institue.....">
+                        </div>
+                    </div>
+                    <div class="city-search">
+                        <div class="row text-white text-uppercase text-center font-weight-bold">
+                            <div class="col-lg-3 col-md-6 col-sm-4 mb-5">
+                                <p>Dhaka</p>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-4 mb-5">Chittagong</div>
+                            <div class="col-lg-3 col-md-6 col-sm-4 mb-5">Rajshahi</div>
+                            <div class="col-lg-3 col-md-6 col-sm-4 mb-5">Barishal</div>
+                            <div class="col-lg-3 col-md-6 col-sm-4 mb-5">Shylet</div>
+                            <div class="col-lg-3 col-md-6 col-sm-4 mb-5">Rangpur</div>
+                            <div class="col-lg-3 col-md-6 col-sm-4 mb-5">moymoshing</div>
+                            <div class="col-lg-3 col-md-6 col-sm-4 mb-5">KHulna</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
+    <!-- slider area end -->
 
-        <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-        <script>
-            var editor_config = {
-              path_absolute : "/",
-              selector: "textarea.my-editor",
-              plugins: [
-                "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-                "searchreplace wordcount visualblocks visualchars code fullscreen",
-                "insertdatetime media nonbreaking save table contextmenu directionality",
-                "emoticons template paste textcolor colorpicker textpattern"
-              ],
-              toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
-              relative_urls: false,
-              file_browser_callback : function(field_name, url, type, win) {
-                var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
-                var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
+    <!-- Most Popular School And College  start  -->
+    <section>
+        <div class="p-school">
+            <div class="container">
+                <div class="p-school-title text-center py-5">
+                    <marquee behavior="" direction="">
+                        @foreach($notices as $notice)
+                            <a href="#">{{$notice->post_title}}</a> |
+                        @endforeach
+                    </marquee>
+                </div>
+                <div class="p-school-content">
+                    <h3 class="text-center pb-5">Most Popular School And College</h3>
+                    <div class="row row-cols-1 row-cols-md-3">
+                        <div class="col mb-4">
+                            <div class="card h-100">
+                                <img src="images/s1.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h6 class="card-title">Stride International School</h6>
+                                    <p class="card-text">Uttara sector 7, Road 27, house 16</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card h-100">
+                                <img src="images/s2.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h6 class="card-title">Adroit International School</h6>
+                                    <p class="card-text">2/7, Block-F, Lalmatia, Dhaka 1207</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card h-100">
+                                <img src="images/s3.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h6 class="card-title">British International Kids School</h6>
+                                    <p class="card-text">13/b Tikatuly, Dhaka-1203</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card h-100">
+                                <img src="images/s4.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h6 class="card-title">Chittagong Model School & College</h6>
+                                    <p class="card-text">Muradpur,Chittagong</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card h-100">
+                                <img src="images/s5.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h6 class="card-title">Cantonment English School & College</h6>
+                                    <p class="card-text">Chawk bazar,Chittagong</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card h-100">
+                                <img src="images/s6.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h6 class="card-title">Chittagong Model School & College</h6>
+                                    <p class="card-text">Muradpur,Chittagong</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Most Popular School And College  end  -->
+    <!-- ads slider start  -->
+    <section>
+        <div class="container">
+            <div class="ads-slider">
+                <img src="images/banneradd.png" class="card-img-top" alt="...">
+            </div>
+        </div>
+    </section>
+    <!-- ads slider end  -->
+    <!-- New School And College start -->
+    <section>
+        <div class="n-school">
+            <div class="container">
+                <div class="p-school-title text-center py-5">
+                    <h3>Recent Added</h3>
+                </div>
+                <div class="p-school-content">
+                    <div class="row row-cols-1 row-cols-md-3">
+                        <div class="col mb-4">
+                            <div class="card h-100">
+                                <img src="images/s1.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h6 class="card-title">Stride International School</h6>
+                                    <p class="card-text">Uttara sector 7, Road 27, house 16</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card h-100">
+                                <img src="images/s2.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h6 class="card-title">Adroit International School</h6>
+                                    <p class="card-text">2/7, Block-F, Lalmatia, Dhaka 1207</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card h-100">
+                                <img src="images/s3.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h6 class="card-title">British International Kids School</h6>
+                                    <p class="card-text">13/b Tikatuly, Dhaka-1203</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    <!-- New School And College end -->
 
-                var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
-                if (type == 'image') {
-                  cmsURL = cmsURL + "&type=Images";
-                } else {
-                  cmsURL = cmsURL + "&type=Files";
-                }
-
-                tinyMCE.activeEditor.windowManager.open({
-                  file : cmsURL,
-                  title : 'Filemanager',
-                  width : x * 0.8,
-                  height : y * 0.8,
-                  resizable : "yes",
-                  close_previous : "no"
-                });
-              }
-            };
-
-            tinymce.init(editor_config);
-          </script>
-
-    </body>
-</html>
+@endsection
+@push('js')
+@endpush

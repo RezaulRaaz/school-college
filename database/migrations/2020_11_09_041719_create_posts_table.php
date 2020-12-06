@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->longText('post_description');
+            $table->string('ppc');
             $table->mediumText('post_meta')->nullable();
             $table->string('post_status')->defaults(2);
             $table->string('post_publish')->nullable();

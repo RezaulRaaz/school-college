@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+p{
+    margin: 0;
+}
+
+/* slider area design start */
+.slider{
+    width: 100%;
+    height:600px ;
+    background-image: url('../images/slider-bg.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+}
+.sldier-overlay{
+    width: 100%;
+    height:600px;
+    background-color: rgba(0, 0, 0, 0.493);
+}
+.slider-inner{
+    width: 100%;
+    height:600px ;
+}
+.slider-name {
+    width: 100%;
+}
+.institue-search{
+    width: 100%;
+}
+.slider-name h3{
+    font-size:48px;
+    font-weight:bold;
+}
+.institue-search input{
+    height: 50px;
+    border-radius: 15px;
+    padding: 0 2rem;
+    font-size: 18px;
+}
+.city-search{
+    width: 100%;
+}
+/* slider area design end */
+.ads-slider img{
+    width: 100%;
+    height:300px ;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+}
+
+/* new school design start */
+.n-school{
+    width: 100%;
+    height:auto;
+}
+/* footer section design start */
+
+marquee a{
+    color: #f81212;
+    text-decoration: none;
+    background-color: transparent;
+    font-size: 18px;
+}
+
+footer{
+    width: 100%;
+    height: auto;
+}
+.footer-top{
+   width: 100%;
+   height: auto;
+   min-height: 250px;
+}
+.footer-logo img{
+    width: 200px;
+}
+.condition-section ul{
+    list-style: none;
+}
+.condition-section ul li a{
+    color: rgb(31, 97, 204);
+    font-size: 16px;
+}
+.footer-bottom{
+    border-top: 2px solid #ddd;
+    width: 100%;
+    height: 80px;
+}
+.footer-btm-inner{
+    min-height: 80px;
+
+}
+.fotter-social p{
+    font-size:18px;
+}
+.fb-color{
+    background-color: #0F8FF2;
+}
+.insta-color{
+    background-color: #C6387F;
+}
+.twitter-color{
+    background-color: #55ACE3;
+}
+.linkedin-color{
+    background-color: #2878B7;
+}
+.youtube-color{
+    background-color: #F40000;
+}
+.social-item{
+    border-radius: 50%;
+    color: #fff;
+    height:35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}

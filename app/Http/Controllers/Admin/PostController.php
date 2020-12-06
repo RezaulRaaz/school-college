@@ -46,6 +46,7 @@ class PostController extends Controller
           $post->post_publish = $request->published ; //publish
           $post->post_image = $imageName;
           $post->post_meta = $request->meta;
+          $post->ppc = $request->postPublishedCategory;
           if($post->save()){
             $post->categories()->attach($request->category);
             toastr()->success('Successfully Add Post', 'Success', ['timeOut' => 5000]);
@@ -118,6 +119,7 @@ class PostController extends Controller
         $post->post_publish = $request->published ; //publish
         $post->post_image = $imageName;
         $post->post_meta = $request->meta;
+        $post->ppc = $request->postPublishedCategory;
         if($post->save()){
           $post->categories()->attach($request->category);
           toastr()->success('Successfully Add Post', 'Success', ['timeOut' => 5000]);
